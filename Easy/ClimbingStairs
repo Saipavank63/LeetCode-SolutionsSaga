@@ -1,0 +1,6 @@
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        a, b = 0, 1  # Initialize two variables a and b
+        for i in range(n):  # Loop from 0 to n-1
+            a, b = b, a + b  # Calculate the next Fibonacci number
+        return b  # Return the final value of b, which represents the number of ways to climb the stairs

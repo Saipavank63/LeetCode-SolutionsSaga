@@ -1,0 +1,38 @@
+# Approach 1
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """ 
+        # Iterate through each element in the 'nums' list
+        for i in nums:
+            # Check if the current element is equal to 0
+            if i == 0:
+                # Find the index of the first occurrence of 0 using 'nums.index(i)'
+                # Remove the first occurrence of 0 using 'nums.pop(index)'
+                # Append 0 to the end of the 'nums' list
+                nums.append(nums.pop(nums.index(i)))
+
+                
+
+# Approach 2
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        # Initialize two pointers: pointsZero for tracking the position of the next zero
+        # and pointsNonZero for iterating through the list.
+        pointsZero = 0
+        
+        # Iterate through the list using the pointsNonZero pointer.
+        for pointsNonZero in range(len(nums)):
+            # If the current element is non-zero and the element at pointsZero is zero,
+            # swap them to move the non-zero element to the position of the next zero.
+            if nums[pointsNonZero] != 0 and nums[pointsZero] == 0:
+                nums[pointsNonZero], nums[pointsZero] = nums[pointsZero], nums[pointsNonZero]
+            
+            # If the element at pointsZero is non-zero, increment pointsZero
+            # to point to the next zero in the list.
+            if nums[pointsZero] != 0:
+                pointsZero += 1

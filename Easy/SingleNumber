@@ -1,0 +1,26 @@
+# Approach 1
+from collections import Counter
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        # Use Counter to count the occurrences of each number in the 'nums' list.
+        nums_count = Counter(nums)
+        
+        # Iterate through the items (number and its count) in the Counter object.
+        for key, val in nums_count.items():
+            # Check if the count of the current number is equal to 1.
+            if val == 1:
+                # If so, it means this number occurs only once in the 'nums' list,
+                # so return it as the single number.
+                return key
+
+# Approach 2
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        # Iterate through each element 'i' in the 'nums' list.
+        for i in nums:
+            # Check if the count of 'i' in the 'nums' list is equal to 1.
+            if nums.count(i) == 1:
+                # If the count is 1, it means 'i' is the single number that appears only once.
+                # Return 'i' as the result.
+                return i

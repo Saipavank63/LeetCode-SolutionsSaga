@@ -1,0 +1,25 @@
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        # Check if the number is negative. Negative numbers can't be palindromes.
+        if x < 0:
+            return False
+        
+        # Initialize a variable to store the reversed number.
+        newNumber = 0
+        
+        # Store the original number for comparison later.
+        original = x
+        
+        # Reverse the digits of the number using a while loop.
+        while x > 0:
+            # Extract the last digit of the number using the modulo operation (%).
+            lastDigit = x % 10
+            
+            # Add the last digit to the newNumber after shifting its digits to the left.
+            newNumber = newNumber * 10 + lastDigit
+            
+            # Remove the last digit from the original number using integer division (//).
+            x = x // 10
+        
+        # Compare the reversed number with the original number to check if it's a palindrome.
+        return newNumber == original

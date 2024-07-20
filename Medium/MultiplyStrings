@@ -1,0 +1,16 @@
+# Approach 1
+class Solution:
+    def multiply(self, num1: str, num2: str) -> str:
+        # Initialize two variables to store the integer equivalents of num1 and num2
+        nums1 = nums2 = 0
+        
+        # Convert num1 to integer equivalent
+        for i in num1:
+            nums1 = nums1 * 10 + (ord(i) - 48)  # Convert ASCII to integer and build the number
+        
+        # Convert num2 to integer equivalent
+        for i in num2:
+            nums2 = nums2 * 10 + (ord(i) - 48)  # Convert ASCII to integer and build the number
+        
+        # Calculate the product of nums1 and nums2 and convert it to string before returning
+        return str(nums1 * nums2)

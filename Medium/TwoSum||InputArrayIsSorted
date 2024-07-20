@@ -1,0 +1,46 @@
+ # Approach 1
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        # Initialize two pointers, 'first' pointing to the start of the list
+        # and 'second' pointing to the end of the list.
+        first = 0
+        second = len(numbers) - 1 
+        
+        # Iterate through the list until the two pointers meet.
+        while first < second:
+            # Calculate the sum of the elements at the 'first' and 'second' positions.
+            temp = numbers[first] + numbers[second]
+            
+            # If the sum equals the target, return the indices (add 1 to each index as indices are 1-based).
+            if temp == target:
+                return [first + 1, second + 1]
+            
+            # If the sum is greater than the target, move the 'second' pointer one position to the left.
+            elif temp > target:
+                second = second - 1
+            
+            # If the sum is less than the target, move the 'first' pointer one position to the right.
+            else:
+                first = first + 1
+        
+        # If no such pair is found, return an empty list.
+        return []
+# Approach 2
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        # Create an empty dictionary 'dct' to store the numbers and their indices as key-value pairs.
+        dct = {}
+        
+        # Iterate through the 'numbers' list.
+        for i in range(len(numbers)):
+            # Calculate the complement, which is the difference between the target and the current number.
+            complement = target - numbers[i]
+            
+            # Check if the complement is already in the 'dct'.
+            if complement in dct:
+                # If the complement is in the 'dct', it means we've found a pair that sums up to the target.
+                # Return the indices of the two numbers (add 1 to each index as indices are 1-based).
+                return [dct[complement] + 1, i + 1]
+            else:
+                # If the complement is not in the 'dct', store the current number and its index in the 'dct'.
+                dct[numbers[i]] = i

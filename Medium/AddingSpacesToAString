@@ -1,0 +1,24 @@
+# Approach 1
+class Solution:
+    def addSpaces(self, s: str, spaces: List[int]) -> str:
+        s = list(s)  # Convert the input string to a list of characters
+        
+        for i in spaces:  # Iterate through the indices in the 'spaces' list
+            s[i] = " " + s[i]  # Insert a space character before the character at index i
+        
+        return "".join(s)  # Convert the modified list of characters back to a string and return
+
+# Approach 2
+class Solution:
+    def addSpaces(self, s: str, spaces: List[int]) -> str:
+        ans = []  # Initialize an empty list to store the characters of the modified string
+        j = 0  # Initialize an index 'j' to track positions in the 'spaces' list
+        
+        for i, c in enumerate(s):  # Iterate through the characters in the input string 's'
+            if j < len(spaces) and i == spaces[j]:  # Check if the current index matches an index in 'spaces'
+                ans.append(' ')  # Add a space character to 'ans'
+                j += 1  # Move to the next index in 'spaces'
+            
+            ans.append(c)  # Add the current character 'c' to 'ans' regardless
+            
+        return ''.join(ans)  # Convert the list 'ans' back to a string and return

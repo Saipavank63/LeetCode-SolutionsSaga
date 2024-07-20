@@ -1,0 +1,10 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        lst = {}  # Create an empty dictionary to store anagrams grouped by their sorted forms
+        for s in strs:  # Iterate through each string in the input list
+            st = tuple(sorted(s))  # Sort the characters in the string and convert it to a tuple
+            if st in lst.keys():  # If the sorted tuple exists in the dictionary
+                lst[st].append(s)  # Append the current string to the list of anagrams
+            else:  # If the sorted tuple does not exist in the dictionary
+                lst[st] = [s]  # Create a new entry in the dictionary with the sorted tuple as key and a list containing the current string as value
+        return lst.values()  # Return the values of the dictionary, which are lists of grouped anagrams

@@ -1,0 +1,16 @@
+class Solution:
+    def countBits(self, num: int) -> List[int]:
+        # Initialize an empty list to store the counts of '1' bits for each number
+        lst = []
+
+        # Iterate through numbers from 0 to num (inclusive)
+        for i in range(0, num + 1):
+            # Convert the current number to its binary representation and remove the '0b' prefix
+            binary_str = bin(i)[2:]
+            
+            # Count the number of '1' bits in the binary representation and append it to the list
+            count_ones = binary_str.count('1')
+            lst.append(count_ones)
+
+        # Return the list containing the counts of '1' bits for each number
+        return lst

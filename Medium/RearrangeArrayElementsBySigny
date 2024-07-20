@@ -1,0 +1,14 @@
+class Solution:
+    def rearrangeArray(self, nums: List[int]) -> List[int]:
+        pos, neg = 0, 1  # Initialize indices for placing positive and negative numbers
+        res = [0] * len(nums)  # Initialize a result list with zeros
+        
+        for i in nums:  # Iterate through the numbers in the input list
+            if i < 0:  # If the number is negative
+                res[neg] = i  # Place the negative number at the 'neg' index
+                neg += 2  # Move to the next available index for negative numbers
+            else:
+                res[pos] = i  # Place the positive number at the 'pos' index
+                pos += 2  # Move to the next available index for positive numbers
+          
+        return res  # Return the rearranged list

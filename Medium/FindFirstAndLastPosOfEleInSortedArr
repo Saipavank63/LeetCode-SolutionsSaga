@@ -1,0 +1,38 @@
+# Approach 1
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        # Check if the target is not present in the nums list
+        if target not in nums:
+            return [-1, -1]  # Return [-1, -1] if target is not found
+
+        # Find the index of the first occurrence of the target
+        value = nums.index(target)
+        
+        # Calculate the index of the last occurrence of the target
+        # by adding the count of target occurrences minus 1 to the first occurrence index
+        return [value, value + nums.count(target) - 1]
+
+# Approach 2
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        
+        # Helper function to perform binary search to find the insertion point of x
+        def search(x):
+            lo, hi = 0, len(nums)  # Initialize the search range from 0 to the length of nums
+            while lo < hi:
+                mid = (lo + hi) // 2  # Calculate the mid-point index
+                if nums[mid] < x:
+                    lo = mid + 1  # Adjust the lower bound if nums[mid] is less than x
+                else:
+                    hi = mid  # Adjust the upper bound if nums[mid] is greater than or equal to x
+            return lo  # Return the insertion point, which is the first index where x should be inserted
+        
+        lo = search(target)  # Find the lower bound for the target value
+        hi = search(target + 1) - 1  # Find the upper bound for the target value
+        
+        if lo <= hi:  # If the lower bound is less than or equal to the upper bound
+            return [lo, hi]  # Return the range [lo, hi] where the target appears
+        
+        return [-1, -1]  # Return [-1, -1] if the target doesn't appear in the nums list
+
+

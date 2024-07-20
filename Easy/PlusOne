@@ -1,0 +1,16 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        # Convert the list of digits into a single integer by joining and converting to an int.
+        num = int(''.join([str(i) for i in digits]))
+        
+        # Add 1 to the integer.
+        incremented_num = num + 1
+        
+        # Convert the incremented integer back to a string.
+        incremented_str = str(incremented_num)
+        
+        # Convert the string back to a list of integers.
+        result = list(map(int, incremented_str))
+        
+        # Return the list with the incremented value.
+        return result

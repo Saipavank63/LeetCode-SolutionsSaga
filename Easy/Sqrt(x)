@@ -1,0 +1,13 @@
+#approach 1
+import math
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        return math.floor(math.sqrt(x))
+
+#approach 2
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        r = x  # Initialize r with the input value x
+        while r*r > x:  # Continue looping while r squared is greater than x
+            r = (r + x/r) / 2  # Update r using Newton's method to approach the square root of x
+        return int(r)  # Return the estimated square root of x

@@ -1,0 +1,11 @@
+class Solution:
+    def findLonely(self, nums: List[int]) -> List[int]:
+        lookup = Counter(nums)  # Create a dictionary that counts the occurrences of each number
+        lst = []  # Initialize an empty list to store the lonely numbers
+        
+        for val in nums:  # Iterate through the numbers in the input list
+            # Check if the current number appears only once, and its adjacent numbers are not in the dictionary
+            if lookup[val] == 1 and val + 1 not in lookup and val - 1 not in lookup:
+                lst.append(val)  # Add the lonely number to the list
+        
+        return lst  # Return the list of lonely numbers

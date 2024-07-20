@@ -1,0 +1,11 @@
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        seen = {}  # Initialize an empty dictionary to store encountered integers
+        for i in nums:  # Iterate through the input list
+            if i in seen:
+                # If the current integer is already in the dictionary, it's a duplicate
+                return True
+            seen[i] = 1  # Otherwise, add the integer to the dictionary with a value of 1
+        else:
+            # If the loop completes without finding any duplicates, return False
+            return False

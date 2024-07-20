@@ -1,0 +1,14 @@
+# Approach 1
+class Solution:
+    def reverse(self, x: int) -> int:
+        newNum = 0  # Initialize a variable to store the reversed number
+        val = -1 if x < 0 else 1  # Determine the sign of the reversed number
+        x = abs(x)  # Make sure x is positive for the reversing process
+        
+        while x != 0:  # Loop through each digit of the input number
+            newNum = newNum * 10 + x % 10  # Add the last digit of x to the result
+            x = x // 10  # Remove the last digit from x
+        
+        # Check if the reversed number is within the 32-bit signed integer range
+        # If it's outside the range, return 0, otherwise return the reversed number
+        return 0 if abs(newNum) >= (2 ** 31) - 1 else val * newNum

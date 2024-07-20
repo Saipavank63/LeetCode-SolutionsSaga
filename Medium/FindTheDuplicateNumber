@@ -1,0 +1,27 @@
+ # Approach 1
+from collections import Counter
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        res = Counter(nums)  # Count the occurrences of each number in the 'nums' list using Counter
+        for key, val in res.items():  # Iterate through the Counter's key-value pairs
+            if val > 1:  # If the value (count) of a number is greater than 1, it's a duplicate
+                return key  # Return the duplicate number
+
+# Approch 2
+def findDuplicate(self, nums: List[int]) -> int:
+    N = len(nums) - 1  # The length of 'nums' minus 1, since the numbers range from 1 to N
+    seen = [0] * (N + 1)  # Initialize a list 'seen' to keep track of seen numbers    
+    for num in nums:  # Iterate through the numbers in the input list
+        if seen[num]:  # If the number has been seen before
+            return num  # Return the duplicate number
+        seen[num] = 1  # Mark the current number as seen by updating the corresponding index in 'seen' to 1
+
+# Approach 3
+def findDuplicate(self, nums: List[int]) -> int:
+    seen = 0  # Initialize a variable to keep track of seen numbers using bitwise operations
+    
+    for num in nums:  # Iterate through the numbers in the input list
+        if seen & (1 << num):  # Check if the bit for the current number is set in 'seen'
+            return num  # Return the duplicate number if the bit is set
+        seen |= 1 << num  # Set the bit for the current number in 'seen'
+

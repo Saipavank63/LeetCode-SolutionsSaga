@@ -1,0 +1,11 @@
+class Solution:
+    def findAndReplacePattern(self, words: List[str], pattern: str) -> List[str]:
+        def P(word):
+            dct = {}  # Create an empty dictionary 'dct' to map characters to unique values
+            return [dct.setdefault(letter, len(dct)) for letter in word]
+            # Iterate through characters in 'word', assign a unique value to each character, and create a list
+        
+        patDict = P(pattern)  # Create a list of unique values corresponding to characters in 'pattern'
+        
+        return [i for i in words if P(i) == patDict]
+        # Return a list of words from 'words' that have the same unique value list as 'patDict'

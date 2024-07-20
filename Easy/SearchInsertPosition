@@ -1,0 +1,17 @@
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        # Check if the target value is in the 'nums' list.
+        if target in nums:
+            # If it is, return the index of the first occurrence of the target.
+            return nums.index(target)
+        else:
+            # If the target is not in the list, iterate through the 'nums' list.
+            for i in range(len(nums)):
+                # Compare each element with the target value.
+                if nums[i] >= target:
+                    # If the current element is greater than or equal to the target,
+                    # return the index 'i' as the position where the target should be inserted.
+                    return i
+            # If we reach this point, it means the target should be inserted at the end of the list,
+            # so return the length of the 'nums' list as the insertion index.
+            return len(nums)

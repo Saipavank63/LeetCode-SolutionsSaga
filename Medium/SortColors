@@ -1,0 +1,32 @@
+# Approach 1 - Brute Force
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        for i in range(len(nums)):  # Iterate through the entire array
+            for j in range(0, len(nums) - i - 1):  # Inner loop to compare adjacent elements
+                if nums[j] > nums[j+1]:  # If the current element is greater than the next element
+                    nums[j], nums[j+1] = nums[j+1], nums[j]  # Swap the elements
+                
+        # The array is now sorted in ascending order
+
+# Approach 2 
+
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        low, mid, high = 0, 0, len(nums) - 1  # Initialize three pointers: low, mid, and high
+        while mid <= high:  # Continue until mid crosses or reaches high
+            if nums[mid] == 0:  # If the current element is 0
+                nums[low], nums[mid] = nums[mid], nums[low]  # Swap the current element with the one at the low pointer
+                low += 1  # Move low pointer to the right
+                mid += 1  # Move mid pointer to the right
+            elif nums[mid] == 1:  # If the current element is 1
+                mid += 1  # Move mid pointer to the right
+            else:  # If the current element is 2
+                nums[mid], nums[high] = nums[high], nums[mid]  # Swap the current element with the one at the high pointer
+                high -= 1  # Move high pointer to the left
+

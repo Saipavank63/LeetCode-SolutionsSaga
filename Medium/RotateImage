@@ -1,0 +1,15 @@
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        for row, value in zip(matrix, list(zip(*matrix))):
+            # 'zip(*matrix)' transposes the matrix by converting rows to columns
+            
+            # Reassign each row in 'matrix' with reversed values from the transposed columns
+            row[:] = [value[~i] for i in range(len(value))]
+            # '~i' represents the index in reverse order
+            
+# Usage:
+# solution = Solution()
+# solution.rotate(matrix)

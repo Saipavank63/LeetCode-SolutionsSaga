@@ -1,0 +1,18 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        # Define a dictionary to map Roman numerals to their corresponding values
+        seen = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+        total = 0  # Initialize the total sum to zero
+        
+        # Iterate through the string from left to right, excluding the last character
+        for ind in range(len(s) - 1):
+            # Check if the current numeral is smaller than the next numeral
+            if seen[s[ind]] < seen[s[ind + 1]]:
+                # If so, subtract the current numeral's value from the total
+                total -= seen[s[ind]]
+            else:
+                # If not, add the current numeral's value to the total
+                total += seen[s[ind]]
+        
+        # Add the value of the last numeral to the total (it's not considered in the loop)
+        return total + seen[s[-1]]
